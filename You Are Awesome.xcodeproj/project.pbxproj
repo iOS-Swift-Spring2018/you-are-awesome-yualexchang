@@ -35,9 +35,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		040B737320194C0000248188 /* img and png */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "img and png";
+			sourceTree = "<group>";
+		};
 		04C74E8A2012460000F03F79 = {
 			isa = PBXGroup;
 			children = (
+				040B737320194C0000248188 /* img and png */,
 				04C74E952012460000F03F79 /* You Are Awesome */,
 				04C74E942012460000F03F79 /* Products */,
 			);
