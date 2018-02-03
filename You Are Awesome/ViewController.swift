@@ -11,8 +11,12 @@ import AVFoundation
 
 class ViewController: UIViewController {
 
+    //MARK: - Properties
+    
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var soundSwitch: UISwitch!
+    
     var awesomePlayer = AVAudioPlayer()
     var index = 0
     var imageIndex = 0
@@ -20,19 +24,22 @@ class ViewController: UIViewController {
     var numOfImages = 9
     var numOfSounds = 5
     
+
     //Code below executives when app's code first loads
     override func viewDidLoad() {
         super.viewDidLoad()
         print("*** The viewDidLoad has executed at \(Date())")
     }
     
-    func playSound(soundName: String) {
+    // MARK: - My Own Functions
+    
+    func playSound(soundName: String, audioPlayer: inout AVAudioPlayer) {
         if let sound = NSDataAsset(name: soundName) {
             //check to see if it is a sound file
             do {
-                try awesomePlayer = AVAudioPlayer(data: sound.data)
+                try audioPlayer = AVAudioPlayer(data: sound.data)
                 print(soundIndex)
-                awesomePlayer.play()
+                audioPlayer.play()
             } catch {
                 //if sound.data is not acceptable
                 print("\(sound) could not be played.")
@@ -50,7 +57,19 @@ class ViewController: UIViewController {
         } while lastNumber == newIndex
         return newIndex
     }
-
+    
+    
+    // MARK: - Action
+    
+    @IBAction func soundSwitchPressed(_ sender: UISwitch) {
+        
+        if !soundSwitch.isOn && soundIndex != -1 {
+            //stop playing
+            awesomePlayer.stop()
+        }
+    }
+    
+    
     @IBAction func showMessagePressed(_ sender: UIButton) {
         let message = ["You are Fantastic!",
                        "You are Great!",
@@ -68,34 +87,36 @@ class ViewController: UIViewController {
         imageIndex = nonRepeatingRandom(lastNumber: index, maxValue: numOfImages)
         image.image = UIImage(named: "\(imageIndex+1)")
         
-        //play a sound
-        soundIndex = nonRepeatingRandom(lastNumber: index, maxValue: numOfSounds)
-        let soundName = "Sound\(soundIndex)"
-        playSound(soundName: soundName)
+        if soundSwitch.isOn {
+            //play a sound
+            soundIndex = nonRepeatingRandom(lastNumber: index, maxValue: numOfSounds)
+            let soundName = "Sound\(soundIndex)"
+            playSound(soundName: soundName, audioPlayer: &awesomePlayer)
+        }
         
-//        var randomIndex = Int(arc4random_uniform(UInt32(messages.count))
-//        messageLabel.text = messages[randomIndex]
         
-//        messageLabel.text = message[index]
-//        messageLabel.textColor = UIColor.orange
-//        index += 1
-//
-//        if (index == message.count) {
-//            index = 0
-//        }
+        //        var randomIndex = Int(arc4random_uniform(UInt32(messages.count))
+        //        messageLabel.text = messages[randomIndex]
         
-//        if messageLabel.text == message[0] {
-//            messageLabel.text = message[1]
-//            messageLabel.textColor = UIColor.orange
-//        } else if messageLabel.text == message[1] {
-//            messageLabel.text = message[2]
-//            messageLabel.textColor = UIColor.red
-//        } else {
-//            messageLabel.text = message[0]
-//            messageLabel.textColor = UIColor.blue
-//        }
+        //        messageLabel.text = message[index]
+        //        messageLabel.textColor = UIColor.orange
+        //        index += 1
+        //
+        //        if (index == message.count) {
+        //            index = 0
+        //        }
+        
+        //        if messageLabel.text == message[0] {
+        //            messageLabel.text = message[1]
+        //            messageLabel.textColor = UIColor.orange
+        //        } else if messageLabel.text == message[1] {
+        //            messageLabel.text = message[2]
+        //            messageLabel.textColor = UIColor.red
+        //        } else {
+        //            messageLabel.text = message[0]
+        //            messageLabel.textColor = UIColor.blue
+        //        }
     }
     
-
 }
 
