@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,60 +18,63 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="You_Are_Awesome" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="You_Are_Awesome" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YN5-iD-4F0">
-                                <rect key="frame" x="113" y="203" width="149" height="96"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="96" id="cXu-ZA-J4y"/>
-                                </constraints>
-                                <state key="normal" title="Show Message"/>
-                                <connections>
-                                    <action selector="showMessagePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="X2D-8J-tOu"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LZE-bW-9QQ">
-                                <rect key="frame" x="34" y="66" width="307" height="129"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="129" id="ihR-tt-3La"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LZE-bW-9QQ">
+                                <rect key="frame" x="34" y="43" width="307" height="129"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="27"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="mxW-Ue-wZb">
-                                <rect key="frame" x="16" y="326" width="343" height="233"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="NhC-dE-6RQ">
+                                <rect key="frame" x="46" y="220" width="283" height="31"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Play Sound:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mwe-qS-ah6">
+                                        <rect key="frame" x="0.0" y="0.0" width="90.5" height="31"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jTX-qx-eRo">
+                                        <rect key="frame" x="110.5" y="0.0" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="soundSwitchPressed:" destination="BYZ-38-t0r" eventType="valueChanged" id="WA1-co-bbr"/>
+                                        </connections>
+                                    </switch>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YN5-iD-4F0">
+                                        <rect key="frame" x="179.5" y="0.0" width="104" height="31"/>
+                                        <state key="normal" title="Show Message"/>
+                                        <connections>
+                                            <action selector="showMessagePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Nkb-bn-y4S"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mxW-Ue-wZb">
+                                <rect key="frame" x="16" y="307" width="343" height="309"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="mxW-Ue-wZb" secondAttribute="bottom" constant="108" id="1UE-xy-M6N"/>
-                            <constraint firstItem="LZE-bW-9QQ" firstAttribute="centerX" secondItem="YN5-iD-4F0" secondAttribute="centerX" id="5EK-tk-vu0"/>
-                            <constraint firstItem="mxW-Ue-wZb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Iif-hY-WKg"/>
-                            <constraint firstItem="mxW-Ue-wZb" firstAttribute="top" secondItem="YN5-iD-4F0" secondAttribute="bottom" constant="27" id="SRu-VG-sGN"/>
-                            <constraint firstItem="LZE-bW-9QQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="34" id="W8g-ww-Qv3"/>
-                            <constraint firstItem="YN5-iD-4F0" firstAttribute="centerX" secondItem="mxW-Ue-wZb" secondAttribute="centerX" id="aas-e7-Wqp"/>
-                            <constraint firstItem="YN5-iD-4F0" firstAttribute="top" secondItem="LZE-bW-9QQ" secondAttribute="bottom" constant="8" symbolic="YES" id="fTU-Zn-8l9"/>
-                            <constraint firstItem="LZE-bW-9QQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="46" id="hWk-Jb-AO7"/>
-                            <constraint firstItem="mxW-Ue-wZb" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="iFH-y7-kCa"/>
-                            <constraint firstItem="YN5-iD-4F0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="113" id="qTH-0v-lpJ"/>
+                            <constraint firstItem="NhC-dE-6RQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="84M-Tz-EZA"/>
+                            <constraint firstItem="NhC-dE-6RQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="200" id="Gsh-e3-Ghs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="image" destination="mxW-Ue-wZb" id="f2V-8k-BOx"/>
                         <outlet property="messageLabel" destination="LZE-bW-9QQ" id="dmq-Rr-Woa"/>
+                        <outlet property="soundSwitch" destination="jTX-qx-eRo" id="6be-7f-RBB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="32.799999999999997" y="31.934032983508249"/>
+            <point key="canvasLocation" x="31.199999999999999" y="31.03448275862069"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="1" width="1287" height="1500"/>
-    </resources>
 </document>
